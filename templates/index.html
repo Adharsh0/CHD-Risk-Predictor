@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHD Risk Prediction</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-bg-shapes"></div>
+        <div class="header-content">
+            <h1>Heart Disease Risk Assessment</h1>
+            <p class="tagline">Predict your 10-year coronary heart disease risk with our advanced AI-powered analytics system, based on the renowned Framingham Heart Study</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card float-element">
+            <h2><i class="fas fa-heartbeat"></i> Cardiac Risk Assessment</h2>
+            <form action="/predict" method="post">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" step="any" required>
+                        <i class="fas fa-calendar-alt input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sex">Biological Sex</label>
+                        <input type="number" name="sex" id="sex" min="0" max="1" placeholder="0=Female, 1=Male" required>
+                        <i class="fas fa-venus-mars input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cigsPerDay">Cigarettes per Day</label>
+                        <input type="number" name="cigsPerDay" id="cigsPerDay" step="any" placeholder="0 if non-smoker" required>
+                        <i class="fas fa-smoking input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="totChol">Total Cholesterol (mg/dL)</label>
+                        <input type="number" name="totChol" id="totChol" step="any" placeholder="Normal range: 125-200" required>
+                        <i class="fas fa-prescription-bottle-alt input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sysBP">Systolic BP (mmHg)</label>
+                        <input type="number" name="sysBP" id="sysBP" step="any" placeholder="Normal range: 90-120" required>
+                        <i class="fas fa-heart input-icon"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="glucose">Glucose Level (mg/dL)</label>
+                        <input type="number" name="glucose" id="glucose" step="any" placeholder="Normal range: 70-99" required>
+                        <i class="fas fa-tint input-icon"></i>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn pulse">
+                    <i class="fas fa-calculator"></i> Calculate Risk Profile
+                </button>
+            </form>
+        </div>
+        
+        {% if result %}
+        <div class="result-section">
+            <h2><i class="fas fa-chart-bar"></i> Your Assessment Results</h2>
+            
+            {% if "High Risk" in result %}
+            <div class="result-card high-risk">
+                <div class="risk-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div class="risk-content">
+                    <div class="risk-text">{{ result }}</div>
+                    <p class="risk-description">Your current health profile indicates a high risk of developing coronary heart disease in the next 10 years. We strongly recommend consulting with a healthcare professional to discuss preventive measures and possible interventions.</p>
+                </div>
+            </div>
+            {% elif "Moderate Risk" in result %}
+            <div class="result-card moderate-risk">
+                <div class="risk-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="risk-content">
+                    <div class="risk-text">{{ result }}</div>
+                    <p class="risk-description">Your current health profile shows a moderate risk of developing coronary heart disease in the next 10 years. Consider discussing these results with your doctor during your next check-up to explore preventive strategies.</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="result-card low-risk">
+                <div class="risk-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="risk-content">
+                    <div class="risk-text">{{ result }}</div>
+                    <p class="risk-description">Your current health profile indicates a low risk of developing coronary heart disease in the next 10 years. Continue maintaining your healthy lifestyle to preserve your cardiovascular health.</p>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if accuracy %}
+            <div class="accuracy-badge">
+                <i class="fas fa-bullseye"></i> Model Accuracy: {{ accuracy|round(2) }}%
+            </div>
+            {% endif %}
+            
+            {% if bar_chart %}
+            <div class="graph-container">
+                <h3><i class="fas fa-chart-line"></i> Your Health Profile Visualization</h3>
+                <div>{{ bar_chart | safe }}</div>
+                <p style="margin-top: 1.2rem; color: #667; font-size: 1.05rem;">This graph visualizes your health parameters in relation to established coronary heart disease risk factors based on the Framingham Heart Study.</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        <div class="card">
+            <h3><i class="fas fa-info-circle"></i> About This Assessment Tool</h3>
+            
+            <div class="about-content">
+                <div class="about-item">
+                    <div class="about-icon"><i class="fas fa-brain"></i></div>
+                    <div class="about-title">AI-Powered Analysis</div>
+                    <p>Our tool uses advanced machine learning algorithms trained on the Framingham Heart Study dataset to provide accurate risk assessments.</p>
+                </div>
+                
+                <div class="about-item">
+                    <div class="about-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="about-title">Privacy-Focused</div>
+                    <p>Your health data remains confidential and is only used for generating your risk assessment. We do not store or share your personal information.</p>
+                </div>
+                
+                <div class="about-item">
+                    <div class="about-icon"><i class="fas fa-stethoscope"></i></div>
+                    <div class="about-title">Medical Disclaimer</div>
+                    <p>This tool provides an estimate only and should not replace professional medical advice. Always consult healthcare professionals for accurate diagnosis and treatment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2025 Coronary Heart Disease Risk Assessment Tool | All rights reserved</p>
+        <p>Powered by Advanced Machine Learning & Health Analytics</p>
+    </footer>
+
+    <script>
+        // Add smooth scrolling to form submission
+        document.querySelector('form').addEventListener('submit', function() {
+            // Add a small delay to allow the form to submit
+            setTimeout(function() {
+                if (document.querySelector('.result-section')) {
+                    document.querySelector('.result-section').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        });
+        
+        // Add input validation and enhanced UI interactions
+        const inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('active');
+            });
+            
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
