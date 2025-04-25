@@ -87,7 +87,12 @@ Bar chart of user's health profile
 Log loss vs. epochs line plot
 
 📷 Screenshots
-![image](https://github.com/user-attachments/assets/cbffa09d-cb03-4c0f-ac2e-0d60152ac5e6)
+![image](https://github.com/user-attachments/assets/da269b12-46c0-4e69-8535-ecafb9446343)
+![image](https://github.com/user-attachments/assets/d64e8d1f-a8d9-4827-84ce-6b6e3ed1bd46)
+![image](https://github.com/user-attachments/assets/5cc2ffc4-2805-4988-ab8f-e94c7c1632ba)
+
+
+
 
 
 🔧 Installation & Run
