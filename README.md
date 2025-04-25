@@ -101,6 +101,7 @@ Copy
 Edit
 # Clone the repository
 git clone https://github.com/Adharsh0/chd-predictor.git
+
 cd chd-predictor
 
 # Install dependencies
