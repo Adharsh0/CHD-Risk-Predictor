@@ -1,8 +1,9 @@
-CHD Risk Prediction Web App(Logistic Regression Model built from scratch)
+**🫀 CHD Risk Prediction Web App(Logistic Regression Model built from scratch)**
+
 A web application that predicts the 10-year risk of Coronary Heart Disease (CHD) based on patient health data using Logistic Regression implemented from scratch with Gradient Descent and Log Loss.
 Built with Flask, NumPy, Pandas, Plotly, and HTML/CSS.
 
-🚀 Features
+**🚀 Features**
 Predicts CHD risk: Not at Risk / Moderate Risk / High Risk
 
 Logistic Regression implemented without using libraries like sklearn.linear_model
@@ -25,7 +26,7 @@ Log Loss Curve
 
 Clean and intuitive frontend built with HTML/CSS + Flask
 
-📊 Input Parameters
+**📊 Input Parameters**
 The app uses the following health indicators as input:
 
 Age
@@ -42,7 +43,7 @@ Glucose level
 
 Heart rate
 
-🛠️ Technologies Used
+**🛠️ Technologies Used**
 Python (NumPy, Pandas, Matplotlib)
 
 Flask (Web framework)
@@ -53,12 +54,12 @@ HTML & CSS (Frontend)
 
 Git & GitHub (Version control)
 
-📁 Dataset
+**📁 Dataset**
 Framingham Heart Study dataset
 
 Cleaned by removing education column and rows with missing values
 
-⚙️ How It Works
+**⚙️ How It Works**
 Model Training:
 
 Logistic Regression with sigmoid activation
@@ -86,14 +87,15 @@ Bar chart of user's health profile
 Log loss vs. epochs line plot
 
 📷 Screenshots
-(Add screenshots of the app interface and charts here if needed)
+![image](https://github.com/user-attachments/assets/cbffa09d-cb03-4c0f-ac2e-0d60152ac5e6)
+
 
 🔧 Installation & Run
 bash
 Copy
 Edit
 # Clone the repository
-git clone https://github.com/your-username/chd-predictor.git
+git clone https://github.com/Adharsh0/chd-predictor.git
 cd chd-predictor
 
 # Install dependencies
